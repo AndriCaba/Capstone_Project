@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Animator transition;
-    public float transitionTime = 1f;
+    public Animator SceneTransition;
+    public float SceneTransitionTime = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +27,8 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadLevel(int LevelIndex)
     {
-        transition.SetTrigger("Start");
-
-        yield return new WaitForSeconds(transitionTime);
-
+        SceneTransition.SetTrigger("Start");
+        yield return new WaitForSeconds(SceneTransitionTime);
         SceneManager.LoadScene(LevelIndex);
     }
 }
