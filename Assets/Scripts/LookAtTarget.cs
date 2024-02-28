@@ -2,35 +2,48 @@ using UnityEngine;
 using Cinemachine;
 public class LookAtTarget : MonoBehaviour
 {
-  public Transform target;
-    public float followSpeed = 5f;
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
+
+    public Transform playerTransform;  // Assign player transform in the inspector
+    public Transform enemyTransform;   // Assign enemy transform in the inspector
 
     private CinemachineVirtualCamera virtualCamera;
 
     void Start()
     {
-        // Assuming the CinemachineVirtualCamera is on the same GameObject
-        virtualCamera = GetComponent<CinemachineVirtualCamera>();
 
-        // Set the LookAt target for the virtual camera
-        if (virtualCamera != null && target != null)
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+
+
+        virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        if (virtualCamera != null && playerTransform != null)
         {
-          
-            virtualCamera.LookAt = target;
+            // Set player as the initial follow target
+            virtualCamera.Follow = playerTransform;
         }
     }
 
     void Update()
     {
-        if (target != null)
+        // Example: Switch follow target to enemy when a condition is met
+        if (Input.GetKeyDown(KeyCode.T))  // Change this condition based on your game logic
         {
-            FollowTarget();
+         
         }
     }
 
-    void FollowTarget()
+    public void SwitchToEnemyTarget(Transform enemyTransform)
     {
-        // Smoothly follow the target using Cinemachine
-        transform.position = Vector3.Lerp(transform.position, target.position, followSpeed * Time.deltaTime);
-}
+        if (virtualCamera != null && enemyTransform != null)
+        {
+            virtualCamera.LookAt = enemyTransform;
+        }
+    }
+    private void LateUpdate()
+    {
+        
+
+    }
 }
