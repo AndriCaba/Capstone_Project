@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -553,9 +553,9 @@ GameObject:
   - component: {fileID: 994418160}
   - component: {fileID: 994418159}
   - component: {fileID: 994418158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1046,6 +1046,9 @@ MonoBehaviour:
   cameraController: {fileID: 1692562093}
   interactorSource: {fileID: 29526263}
   interactRange: 10
+  selectableObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1692562093
 MonoBehaviour:
   m_ObjectHideFlags: 0

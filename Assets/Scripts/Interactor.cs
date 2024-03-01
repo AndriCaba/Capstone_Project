@@ -14,8 +14,8 @@ public class Interactor : MonoBehaviour
     public LookAtTarget cameraController;
     public Transform interactorSource;
     public float interactRange;
+    public LayerMask selectableObjectsLayer;
 
-  
     private void Start()
     {
         // lockCamera = cameraController.GetComponent<LockOnCamera>();  // Initialize it once
@@ -30,18 +30,27 @@ public class Interactor : MonoBehaviour
             Debug.Log("This is a log message"); 
             Ray ray = new Ray(interactorSource.position, interactorSource.forward);
             
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, interactRange))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, interactRange, selectableObjectsLayer))
             {
                Transform selectedObject = hitInfo.transform;
-                    cameraController.Lock(selectedObject);
-                
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                /*cameraController.Lock(selectedObject);
+*/
+                /*if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
                    
                     // cameraController.SetTarget(selectedObject);
                      interactObj.Interact();
+                }*/
+
+                if (selectedObject.CompareTag("Selectable")) {
+
+                    
+                    cameraController.Lock(selectedObject);
+                    Debug.Log("loppp");
                 }
+                   
             }
+            
         }
             if (Input.GetMouseButtonDown(0))  // Right click
         {
