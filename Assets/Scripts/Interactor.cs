@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public interface IInteractable
 {
@@ -9,39 +10,45 @@ public interface IInteractable
 
 public class Interactor : MonoBehaviour
 {
-    public LookAtTarget cameraControler;
-    public LayerMask SelectObjectLayer;
-    public Transform InteractorSource;
-    public float InteractRange;
+    // public LockOnCamera cameraController;
+    public LookAtTarget cameraController;
+    public Transform interactorSource;
+    public float interactRange;
 
+  
     private void Start()
     {
-        LookAtTarget LockCamera = GetComponent<LookAtTarget>();
-        LockCamera.enabled = false;
-
-
-        
+        // lockCamera = cameraController.GetComponent<LockOnCamera>();  // Initialize it once
+        // lockCamera.enabled = false;
     }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))//change to right click
+        if (Input.GetMouseButtonDown(1))  // Right click
         {
-            LookAtTarget LockCamera = GetComponent<LookAtTarget>();
-            Ray ray = new Ray(InteractorSource.position, InteractorSource.forward);
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, InteractRange))
+            // lockCamera.enabled = true;
+            Debug.Log("This is a log message"); 
+            Ray ray = new Ray(interactorSource.position, interactorSource.forward);
+            
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, interactRange))
             {
+               Transform selectedObject = hitInfo.transform;
+                    cameraController.Lock(selectedObject);
+                
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
-
-                    /*interactObj.Interact();*/
-                    LockCamera.SwitchToEnemyTarget(InteractorSource);
+                   
+                    // cameraController.SetTarget(selectedObject);
+                     interactObj.Interact();
                 }
             }
         }
+            if (Input.GetMouseButtonDown(0))  // Right click
+        {
+          cameraController.Goback();
+        }
 
         // Draw a debug line to visualize the interaction range
-        Debug.DrawRay(InteractorSource.position, InteractorSource.forward * InteractRange, Color.blue);
+        Debug.DrawRay(interactorSource.position, interactorSource.forward * interactRange, Color.blue);
     }
-   
-
 }

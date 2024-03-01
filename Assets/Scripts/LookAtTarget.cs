@@ -1,49 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+
 public class LookAtTarget : MonoBehaviour
 {
-    private Vector3 originalPosition;
-    private Quaternion originalRotation;
-
-    public Transform playerTransform;  // Assign player transform in the inspector
-    public Transform enemyTransform;   // Assign enemy transform in the inspector
-
-    private CinemachineVirtualCamera virtualCamera;
+    public Transform target;
+    public Transform originalTarget; // The target to lock onto
+    public CinemachineVirtualCamera virtualCamera; // Reference to your Cinemachine Virtual Camera
 
     void Start()
     {
-
-        originalPosition = transform.position;
-        originalRotation = transform.rotation;
-
-
-        virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        if (virtualCamera != null && playerTransform != null)
+        if (virtualCamera == null)
         {
-            // Set player as the initial follow target
-            virtualCamera.Follow = playerTransform;
+            // Assign the Cinemachine Virtual Camera component if not assigned in the Inspector
+            virtualCamera = GetComponent<CinemachineVirtualCamera>();
         }
     }
 
     void Update()
     {
-        // Example: Switch follow target to enemy when a condition is met
-        if (Input.GetKeyDown(KeyCode.T))  // Change this condition based on your game logic
-        {
-         
-        }
+    //   virtualCamera.LookAt = target;
     }
 
-    public void SwitchToEnemyTarget(Transform enemyTransform)
-    {
-        if (virtualCamera != null && enemyTransform != null)
-        {
-            virtualCamera.LookAt = enemyTransform;
-        }
-    }
-    private void LateUpdate()
-    {
-        
 
+    public void Lock(Transform newtarget)
+    {
+         virtualCamera.LookAt = newtarget;
+
+        // if (target != null && virtualCamera != null)
+        // {
+        //     // Set the Cinemachine Virtual Camera's Look At target
+        //     virtualCamera.LookAt = target;
+        // }
     }
+    public void Goback()
+    {
+         virtualCamera.LookAt = originalTarget;
+
+        // if (target != null && virtualCamera != null)
+        // {
+        //     // Set the Cinemachine Virtual Camera's Look At target
+        //     virtualCamera.LookAt = target;
+        // }
+    }
+    
 }

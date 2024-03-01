@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LockOnCamera : MonoBehaviour
 {
-    private Transform target; // The currently locked-on target.
+    public Transform target; // The currently locked-on target.
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     public float smoothSpeed = 5f; // Adjust this to control camera follow speed.
@@ -20,7 +18,7 @@ public class LockOnCamera : MonoBehaviour
 
     void Update()
     {
-   
+      
     }
 
     private void LateUpdate()
