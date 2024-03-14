@@ -16,10 +16,15 @@ public class Interactor : MonoBehaviour
     public float interactRange;
     public LayerMask selectableObjectsLayer;
 
+    public GameObject Canvas_EnemyUI;// enemy UIs
+
+
+
     private void Start()
     {
         // lockCamera = cameraController.GetComponent<LockOnCamera>();  // Initialize it once
         // lockCamera.enabled = false;
+        Canvas_EnemyUI.SetActive(false);
     }
 
     void Update()
@@ -33,20 +38,14 @@ public class Interactor : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hitInfo, interactRange, selectableObjectsLayer))
             {
                Transform selectedObject = hitInfo.transform;
-                /*cameraController.Lock(selectedObject);
-*/
-                /*if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-                {
-                   
-                    // cameraController.SetTarget(selectedObject);
-                     interactObj.Interact();
-                }*/
+              
+
 
                 if (selectedObject.CompareTag("Selectable")) {
 
                     
                     cameraController.Lock(selectedObject);
-                    Debug.Log("loppp");
+                  
                 }
                    
             }
@@ -60,4 +59,6 @@ public class Interactor : MonoBehaviour
         // Draw a debug line to visualize the interaction range
         Debug.DrawRay(interactorSource.position, interactorSource.forward * interactRange, Color.blue);
     }
+
+
 }
