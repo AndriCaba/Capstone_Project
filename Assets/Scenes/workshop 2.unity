@@ -2638,7 +2638,6 @@ MonoBehaviour:
   selectableObjectsLayer:
     serializedVersion: 2
     m_Bits: 64
-  Canvas_EnemyUI: {fileID: 0}
 --- !u!114 &1692562093
 MonoBehaviour:
   m_ObjectHideFlags: 0

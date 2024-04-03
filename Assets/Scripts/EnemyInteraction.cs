@@ -11,7 +11,9 @@ public class EnemyInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
     }
 
     // Update is called once per frame
@@ -27,6 +29,8 @@ public class EnemyInteraction : MonoBehaviour
 
                 if (clickedObject == gameObject && !isUIVisible) // Check if the object clicked is the enemy and UI is not visible
                 {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                     ToggleUIElement();
                 }
             }
@@ -36,6 +40,7 @@ public class EnemyInteraction : MonoBehaviour
         {
             if (currentFocusedEnemy != null)
             {
+                Cursor.visible = false;
                 currentFocusedEnemy.GetComponent<EnemyInteraction>().ToggleUIElement();
                 currentFocusedEnemy = null;
             }

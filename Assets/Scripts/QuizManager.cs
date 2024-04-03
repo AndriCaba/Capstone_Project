@@ -104,10 +104,7 @@ public class QuizManager : MonoBehaviour
         {
             ShowQuestion();
         }
-        else
-        {
-            DisplayQuizResults();
-        }
+        
     }
 
     void DisplayQuizResults()

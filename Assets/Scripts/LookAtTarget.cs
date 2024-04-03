@@ -27,7 +27,8 @@ public class LookAtTarget : MonoBehaviour
     public void Lock(Transform newtarget)
     {
          virtualCamera.LookAt = newtarget;
-
+        virtualCamera.m_Lens.FieldOfView = 90;
+    
         // if (target != null && virtualCamera != null)
         // {
         //     // Set the Cinemachine Virtual Camera's Look At target
@@ -37,7 +38,7 @@ public class LookAtTarget : MonoBehaviour
     public void Goback()
     {
          virtualCamera.LookAt = originalTarget;
-
+        virtualCamera.m_Lens.FieldOfView = 60; // default fov
         // if (target != null && virtualCamera != null)
         // {
         //     // Set the Cinemachine Virtual Camera's Look At target

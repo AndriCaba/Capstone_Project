@@ -16,20 +16,17 @@ public class Interactor : MonoBehaviour
     public float interactRange;
     public LayerMask selectableObjectsLayer;
 
-    public GameObject Canvas_EnemyUI;// enemy UIs
-
-
-
     private void Start()
     {
         // lockCamera = cameraController.GetComponent<LockOnCamera>();  // Initialize it once
         // lockCamera.enabled = false;
-        Canvas_EnemyUI.SetActive(false);
+
+        
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))  // Right click
+        if (Input.GetMouseButtonDown(0))  // Right click
         {
             // lockCamera.enabled = true;
             Debug.Log("This is a log message"); 
@@ -45,13 +42,14 @@ public class Interactor : MonoBehaviour
 
                     
                     cameraController.Lock(selectedObject);
-                  
+
+
                 }
                    
             }
             
         }
-            if (Input.GetMouseButtonDown(0))  // Right click
+            if (Input.GetMouseButtonDown(1))  // Right click
         {
           cameraController.Goback();
         }
