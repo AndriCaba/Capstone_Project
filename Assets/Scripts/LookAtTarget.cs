@@ -28,6 +28,7 @@ public class LookAtTarget : MonoBehaviour
     {
          virtualCamera.LookAt = newtarget;
         virtualCamera.m_Lens.FieldOfView = 90;
+       virtualCamera.GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y = 0.9f;
     
         // if (target != null && virtualCamera != null)
         // {
@@ -38,7 +39,8 @@ public class LookAtTarget : MonoBehaviour
     public void Goback()
     {
          virtualCamera.LookAt = originalTarget;
-        virtualCamera.m_Lens.FieldOfView = 60; // default fov
+        virtualCamera.m_Lens.FieldOfView = 60; 
+        virtualCamera.GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y = 0.4f;// default fov
         // if (target != null && virtualCamera != null)
         // {
         //     // Set the Cinemachine Virtual Camera's Look At target

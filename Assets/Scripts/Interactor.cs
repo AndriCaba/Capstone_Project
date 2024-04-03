@@ -15,13 +15,14 @@ public class Interactor : MonoBehaviour
     public Transform interactorSource;
     public float interactRange;
     public LayerMask selectableObjectsLayer;
-
+    public AimStateManager aimStateManager;
+  
     private void Start()
     {
         // lockCamera = cameraController.GetComponent<LockOnCamera>();  // Initialize it once
         // lockCamera.enabled = false;
 
-        
+        aimStateManager.enabled = true;
     }
 
     void Update()
@@ -41,6 +42,7 @@ public class Interactor : MonoBehaviour
                 if (selectedObject.CompareTag("Selectable")) {
 
                     
+                    aimStateManager.enabled = false;
                     cameraController.Lock(selectedObject);
 
 
@@ -50,9 +52,10 @@ public class Interactor : MonoBehaviour
             
         }
             if (Input.GetMouseButtonDown(1))  // Right click
-        {
-          cameraController.Goback();
-        }
+                {
+                    aimStateManager.enabled = true;
+                    cameraController.Goback();
+                }
 
         // Draw a debug line to visualize the interaction range
         Debug.DrawRay(interactorSource.position, interactorSource.forward * interactRange, Color.blue);

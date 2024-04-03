@@ -29,8 +29,7 @@ public class EnemyInteraction : MonoBehaviour
 
                 if (clickedObject == gameObject && !isUIVisible) // Check if the object clicked is the enemy and UI is not visible
                 {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
+                    
                     ToggleUIElement();
                 }
             }
@@ -40,9 +39,10 @@ public class EnemyInteraction : MonoBehaviour
         {
             if (currentFocusedEnemy != null)
             {
-                Cursor.visible = false;
+               
                 currentFocusedEnemy.GetComponent<EnemyInteraction>().ToggleUIElement();
                 currentFocusedEnemy = null;
+                 Cursor.visible = false;
             }
         }
 
@@ -58,6 +58,8 @@ public class EnemyInteraction : MonoBehaviour
         }
         else
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             isUIVisible = true;
             uiElement.SetActive(true);
 
