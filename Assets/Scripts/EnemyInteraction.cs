@@ -42,7 +42,7 @@ public class EnemyInteraction : MonoBehaviour
                
                 currentFocusedEnemy.GetComponent<EnemyInteraction>().ToggleUIElement();
                 currentFocusedEnemy = null;
-                 Cursor.visible = false;
+                
             }
         }
 
@@ -58,8 +58,7 @@ public class EnemyInteraction : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            
             isUIVisible = true;
             uiElement.SetActive(true);
 

@@ -13,8 +13,8 @@ public class QuizQuestion
 
 public class QuizManager : MonoBehaviour
 {
-    public GameObject Weapon;
-    public GameObject EnemyWeapon;
+   // public GameObject Weapon;
+    //public GameObject EnemyWeapon;
 
     public Text questionText;
     public Button[] answerButtons;
@@ -109,7 +109,6 @@ public class QuizManager : MonoBehaviour
 
     void DisplayQuizResults()
     {
-        questionText.text = "Quiz Completed!";
-        feedbackText.text = "You got " + correctAnswers + " out of " + quizQuestions.Count + " questions correct.";
+       
     }
 }
