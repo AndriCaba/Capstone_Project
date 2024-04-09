@@ -34,7 +34,7 @@ public class AttackStateManager : MonoBehaviour
         Shoot();
 
     }
-    void Shoot()
+   public void Shoot()
     {
 
 

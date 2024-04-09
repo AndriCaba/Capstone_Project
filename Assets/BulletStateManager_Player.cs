@@ -6,7 +6,7 @@ public class BulletStateManager_Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 20f;
-    public int damage = 40;
+    public float damage = -40;
 
     private GameObject target;
     private Rigidbody bulletRB;
@@ -16,7 +16,7 @@ public class BulletStateManager_Player : MonoBehaviour
         bulletRB = GetComponent<Rigidbody>();
 
         // Find all objects with the "Selectable" tag
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Enemy_Hit");
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Selectable");
 
         if (targets.Length > 0)
         {
@@ -50,17 +50,15 @@ public class BulletStateManager_Player : MonoBehaviour
 
     void OnTriggerEnter(Collider hitInfo)
     {
-       /* EnemyHealth enemy = hitInfo.GetComponent<EnemyHealth>();*/
-/*
+        Healthbar_script enemy = hitInfo.GetComponent<Healthbar_script>();
+
+            Debug.Log(hitInfo.name);
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
-        }*/
-
-      /*  Debug.Log(hitInfo.name);
-*/
-        // Destroy the bullet upon hitting an enemy
-      /*  Destroy(this.gameObject);*/
+        // Update the health of the enemy
+             enemy.UpdateHealth(damage);
+        }
+        
     }
 
     GameObject FindNearestTarget(GameObject[] targets)

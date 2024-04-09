@@ -10,12 +10,8 @@ public class QuizQuestion
     public int correctAnswerIndex; // Index of the correct answer in the choices array
 }
 
-
 public class QuizManager : MonoBehaviour
 {
-   // public GameObject Weapon;
-    //public GameObject EnemyWeapon;
-
     public Text questionText;
     public Button[] answerButtons;
     public Text feedbackText;
@@ -27,6 +23,10 @@ public class QuizManager : MonoBehaviour
 
     private int currentQuestion = 0;
     private int correctAnswers = 0;
+
+    // References to GameObjects with necessary components
+    public AttackStateManager playerWeaponsManager;
+   // public EnemyWeapon enemyWeapon;
 
     void Start()
     {
@@ -77,9 +77,7 @@ public class QuizManager : MonoBehaviour
     }
 
     void CheckAnswer(int choiceIndex)
-    {/*
-        Weapon Weapons = Weapon.GetComponent<Weapon>();
-        EnemyWeapon Weapons2 = EnemyWeapon.GetComponent<EnemyWeapon>();*/
+    {
         int questionIndex = questionOrder[currentQuestion];
         string selectedAnswer = quizQuestions[questionIndex].choices[choiceIndex];
 
@@ -90,12 +88,14 @@ public class QuizManager : MonoBehaviour
         {
             feedbackText.text = "Correct!";
             correctAnswers++;
-           /* Weapons.Shoot(); // player*/
+            // Call the Shoot method on the playerWeaponsManager
+            playerWeaponsManager.Shoot();
         }
         else
         {
             feedbackText.text = "Incorrect. The correct answer is: " + correctAnswer;
-         /*   Weapons2.Shoot(); // enemy shoots*/
+            // Call the Shoot method on the enemyWeapon
+           // enemyWeapon.Shoot();
         }
 
         currentQuestion++;
@@ -104,11 +104,10 @@ public class QuizManager : MonoBehaviour
         {
             ShowQuestion();
         }
-        
     }
 
     void DisplayQuizResults()
     {
-       
+        // Display quiz results here
     }
 }
