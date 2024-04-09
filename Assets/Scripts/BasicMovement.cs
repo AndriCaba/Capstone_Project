@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BasicMovement : MonoBehaviour
 {
- public float speed = 5f;
+    public float speed = 5f;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
