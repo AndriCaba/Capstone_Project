@@ -14,10 +14,12 @@ public class MovementStateManager : MonoBehaviour
     [SerializeField] float gravity = -9.81f;
     Vector3 velocity;
     Vector3 spherePos;
+    bool isWalking = false; // Track walking state
+
     // Start is called before the first frame update
     void Start()
     {
-        controller= GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -27,36 +29,34 @@ public class MovementStateManager : MonoBehaviour
         Gravity();
     }
 
-    void GetDirectionAndMove(){
-
+    void GetDirectionAndMove()
+    {
         hzInput = Input.GetAxis("Horizontal");
         vInput = Input.GetAxis("Vertical");
 
         dir = transform.forward * vInput + transform.right * hzInput;
-        controller.Move (dir * MoveSpeed * Time.deltaTime);
 
+        controller.Move(dir * MoveSpeed * Time.deltaTime);
     }
-    bool IsGrounded(){
 
-
+    bool IsGrounded()
+    {
         spherePos = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
-        if  (Physics.CheckSphere(spherePos, controller.radius - 0.05f, groundMask)) return true;
+        if (Physics.CheckSphere(spherePos, controller.radius - 0.05f, groundMask)) return true;
         return false;
     }
-    void  Gravity ()
+
+    void Gravity()
     {
+        if (!IsGrounded()) velocity.y += gravity * Time.deltaTime;
+        else if (velocity.y < 0) velocity.y = -2;
 
-        if(!IsGrounded()) velocity.y += gravity * Time.deltaTime;
-        else if(velocity.y < 0) velocity.y = -2;
-
-        controller.Move (velocity * Time.deltaTime);
-
-
+        controller.Move(velocity * Time.deltaTime);
     }
 
     // private void OnDrawGizmos() {
 
     //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(spherePos, controller.radius - 0.05f);    
+    //     Gizmos.DrawWireSphere(spherePos, controller.radius - 0.05f);   
     // }
 }
