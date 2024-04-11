@@ -6,7 +6,7 @@ public class BulletStateManager_Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 20f;
-    public float damage = -40;
+    public float damage = -40f;
 
     private GameObject target;
     private Rigidbody bulletRB;
@@ -50,7 +50,7 @@ public class BulletStateManager_Player : MonoBehaviour
 
     void OnTriggerEnter(Collider hitInfo)
     {
-        Healthbar_script enemy = hitInfo.GetComponent<Healthbar_script>();
+        Enemy_Healthbar_Script enemy = hitInfo.GetComponent<Enemy_Healthbar_Script>();
 
             Debug.Log(hitInfo.name);
         if (enemy != null)
