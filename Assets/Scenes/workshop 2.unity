@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -658,30 +658,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392612098}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 210d2a8b67eafc34680bd520c48627d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 15
-  _currentHealth: 0
-  _healthBarfill: {fileID: 1869612208}
-  camera: {fileID: 29526262}
-  target: {fileID: 994418161}
-  _healthtext: {fileID: 598551045}
-  _fillSpeed: 1
-  _ColorGradient:
+  healthtext: {fileID: 598551045}
+  healthBarfill: {fileID: 1869612208}
+  fillSpeed: 2
+  colorGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 0.952, g: 1, b: 0, a: 1}
-    key2: {r: 0.035294116, g: 1, b: 0.055871405, a: 0}
+    key1: {r: 0.963735, g: 1, b: 0, a: 1}
+    key2: {r: 0.1430471, g: 1, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 7132
-    ctime1: 20046
+    ctime0: 0
+    ctime1: 32768
     ctime2: 65535
     ctime3: 0
     ctime4: 0
@@ -700,6 +696,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  camera: {fileID: 29526262}
 --- !u!1 &414407632
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +921,7 @@ SphereCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.09
@@ -1978,46 +1975,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 994418156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a824c14a9ee47004f9600643a98d4735, type: 3}
+  m_Script: {fileID: 11500000, guid: d64d37b95caceeb43a711a0a4bc0e2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 15
-  _currentHealth: 0
-  _healthBarfill: {fileID: 1869612208}
-  camera: {fileID: 29526262}
-  target: {fileID: 994418161}
-  _healthtext: {fileID: 598551045}
-  _fillSpeed: 1
-  _ColorGradient:
-    serializedVersion: 2
-    key0: {r: 0.9056604, g: 0.07262372, b: 0.07262372, a: 1}
-    key1: {r: 0.9339623, g: 0.6690889, b: 0.12775902, a: 1}
-    key2: {r: 0.19037086, g: 0.9339623, b: 0.066082224, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 11758
-    ctime1: 28913
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+  maxHealth: 50
+  healthbar: {fileID: 392612104}
 --- !u!1 &1176683315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,26 +2938,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210d2a8b67eafc34680bd520c48627d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 0
-  _healthBarfill: {fileID: 1299757961}
-  camera: {fileID: 29526262}
-  target: {fileID: 1176683320}
-  _healthtext: {fileID: 975903222}
-  _fillSpeed: 1
-  _ColorGradient:
+  healthtext: {fileID: 0}
+  healthBarfill: {fileID: 0}
+  fillSpeed: 0
+  colorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 0.952, g: 1, b: 0, a: 1}
-    key2: {r: 0.035294116, g: 1, b: 0.055871405, a: 0}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 7132
-    ctime1: 20046
-    ctime2: 65535
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -3011,8 +2969,9 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 3
+    m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  camera: {fileID: 0}
 --- !u!4 &1514717877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5977937850668086848, guid: 4e326f068518c9c4b88f4da310cf8cba,
@@ -3282,7 +3241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692562088}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
   m_Name: 

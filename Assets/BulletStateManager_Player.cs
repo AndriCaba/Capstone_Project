@@ -5,8 +5,8 @@ using UnityEngine;
 public class BulletStateManager_Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float speed = 20f;
-    public float damage = -40f;
+    public float speed;
+    public float damage = 40;
 
     private GameObject target;
     private Rigidbody bulletRB;
@@ -50,14 +50,21 @@ public class BulletStateManager_Player : MonoBehaviour
 
     void OnTriggerEnter(Collider hitInfo)
     {
-        Enemy_Healthbar_Script enemy = hitInfo.GetComponent<Enemy_Healthbar_Script>();
+        Enemt_health enemy = hitInfo.GetComponent<Enemt_health>();
 
-            Debug.Log(hitInfo.name);
+        Debug.Log(hitInfo.name);
+        enemy.TakeDamage(damage);
         if (enemy != null)
         {
-        // Update the health of the enemy
-             enemy.UpdateHealth(damage);
+            
+             enemy.TakeDamage(damage);
         }
+        else{
+                 Debug.LogError("Collider hitInfo is null!");
+            
+
+        }
+        Destroy(this.gameObject);
         
     }
 

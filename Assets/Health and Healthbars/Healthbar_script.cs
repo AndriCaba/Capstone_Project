@@ -4,41 +4,87 @@ using UnityEngine.UI;
 using TMPro; 
 public class Healthbar_script : MonoBehaviour
 {
-    public float _maxHealth = 100;
-    public float _currentHealth;
-
-    [SerializeField] private Image _healthBarfill;
+    [SerializeField] private TextMeshProUGUI healthtext;
+     [SerializeField] private Image healthBarfill;
+    [SerializeField] private float fillSpeed;
+    [SerializeField] private Gradient colorGradient;
     [SerializeField] public Camera camera;
-    [SerializeField] Transform target;
-    [SerializeField] public TextMeshProUGUI _healthtext;
-    [SerializeField] public float _fillSpeed;
-    [SerializeField] public Gradient _ColorGradient;
-     void Start() {
-        
-        _currentHealth = _maxHealth;
-        _healthtext.text = _currentHealth.ToString();
+    void Update()
+     {
+         transform.rotation = camera.transform.rotation;
+    }
+    public void SetMaxHealth(float health)
+    {
+      float targetFillAmount = health;
+      healthtext.text = health.ToString();
+     healthBarfill.DOFillAmount(targetFillAmount, fillSpeed);
+        healthBarfill.color = colorGradient.Evaluate(targetFillAmount);
+    
 
+    
     }
-    void Update() {
-        transform.rotation = camera.transform.rotation;
-        
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            UpdateHealth(-10);
+       public void SetHealth(float health, float maxHealth)
+    { 
+    
+        float targetFillAmount = health/ maxHealth;
+        healthtext.text = health.ToString();
+        healthBarfill.DOFillAmount(targetFillAmount, fillSpeed);
+        healthBarfill.color = colorGradient.Evaluate(targetFillAmount);
+    
+    }
+    // public void SetHealth(int health)
+    // { 
+    // slider.value = health;
+    // healthBarfill.DOFillAmount(targetFillAmount, fillSpeed);
+    // healthBarfill.color = colorGradient.Evaluate(targetFillAmount);
+    
+    // }
+    // private float maxHealth;
+    // private float currentHealth;
 
-        }
-    }
-    public void UpdateHealth (float amount){
-        _currentHealth +=amount;
-         _healthtext.text = _currentHealth.ToString();
-        UpdateHealthbar();
+    // [SerializeField] private Image healthBarfill;
+    // [SerializeField] private Camera camera;
+    // [SerializeField] private TextMeshProUGUI healthtext;
+    // [SerializeField] private float fillSpeed;
+    // [SerializeField] private Gradient colorGradient;
 
-    }
-    public void UpdateHealthbar(){
-        float targetFillAmount = _currentHealth / _maxHealth;
-        //_healthBarfill.fillAmount = targetFillAmount;
-        _healthBarfill.DOFillAmount(targetFillAmount, _fillSpeed);
-        _healthBarfill.color = _ColorGradient.Evaluate(targetFillAmount);
-    }
+    // void Start()
+    // {
+    //     // Set initial health values
+       
+    // }
+
+    // void Update()
+    // {
+    //     transform.rotation = camera.transform.rotation;
+    // }
+
+    // // Method to update health and health bar
+    // public void UpdateHealth(float newMaxHealth, float newCurrentHealth)
+    // {
+    //     maxHealth = newMaxHealth;
+    //     currentHealth = newCurrentHealth;
+
+    //     // Update health text
+    //     healthtext.text = currentHealth.ToString();
+
+    //     // Update health bar visuals
+    //     UpdateHealthbar();
+    // }
+    // public void Update2 (float amount) {
+
+    //     currentHealth += amount;
+    //     healthtext.text = currentHealth.ToString();
+    //     UpdateHealthbar();
+    // }
+
+    // // Method to update health bar visuals
+    // private void UpdateHealthbar()
+    // {
+    //     float targetFillAmount = currentHealth / maxHealth;
+    //     healthBarfill.DOFillAmount(targetFillAmount, fillSpeed);
+    //     healthBarfill.color = colorGradient.Evaluate(targetFillAmount);
+    // }
 }
 
 
