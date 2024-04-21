@@ -778,7 +778,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -38.47, y: 1.62, z: 0.56}
-  m_LocalScale: {x: 1, y: 7.11, z: 53.12}
+  m_LocalScale: {x: 1, y: 7.11, z: 84.04}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2173,6 +2173,7 @@ GameObject:
   - component: {fileID: 994418163}
   - component: {fileID: 994418165}
   - component: {fileID: 994418164}
+  - component: {fileID: 994418166}
   m_Layer: 6
   m_Name: Enemy_Test_Dummy#2
   m_TagString: Selectable
@@ -2309,15 +2310,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff99eb5d141fac44b9ebe11124d8ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
-  patrolSpeed: 2
-  chaseSpeed: 5
-  lineOfSight: 5
-  shootingRange: 3
   fireRate: 1
   bulletPrefab: {fileID: 0}
   bulletParent: {fileID: 0}
   rotationSpeed: 0
+  agent: {fileID: 994418165}
+  Player: {fileID: 1176683320}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointSet: 0
+  walkPointRange: 5
+  timeBetweenAttacks: 0
+  isDead: 0
+  sightRange: 20
+  attackRange: 12
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  green: {fileID: 0}
+  red: {fileID: 0}
+  yellow: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!195 &994418165
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2340,6 +2357,42 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &994418166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994418156}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af76d522186a674f853108e096d534e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 994418165}
+  player: {fileID: 1176683320}
+  gun: {fileID: 0}
+  health: 100
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointSet: 0
+  walkPointRange: 20
+  timeBetweenAttacks: 0
+  isDead: 0
+  sightRange: 20
+  attackRange: 12
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  green: {fileID: 0}
+  red: {fileID: 0}
+  yellow: {fileID: 0}
+  projectile: {fileID: 56852242586695119, guid: 4d7e19c9fcb52be4bb9a8ba855ffe12d,
+    type: 3}
 --- !u!1 &1176683315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,7 +2407,7 @@ GameObject:
   - component: {fileID: 1176683321}
   - component: {fileID: 1176683324}
   - component: {fileID: 1176683326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3298,8 +3351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210d2a8b67eafc34680bd520c48627d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthtext: {fileID: 0}
-  healthBarfill: {fileID: 0}
+  healthtext: {fileID: 975903222}
+  healthBarfill: {fileID: 1299757961}
   fillSpeed: 0
   colorGradient:
     serializedVersion: 2
@@ -3331,7 +3384,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  camera: {fileID: 0}
+  camera: {fileID: 29526262}
 --- !u!4 &1514717877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5977937850668086848, guid: 4e326f068518c9c4b88f4da310cf8cba,
