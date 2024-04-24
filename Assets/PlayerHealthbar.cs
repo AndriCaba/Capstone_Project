@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemt_health : MonoBehaviour
+public class PlayerHealthbar : MonoBehaviour
 {
-   public float maxHealth = 100f;
-    private float currentHealth;
+ public float maxHealth = 100f;
+    public float currentHealth;
     public Healthbar_script healthbar;
 
     void Start()
@@ -17,11 +17,7 @@ public class Enemt_health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-       
-        if (currentHealth < 0){
-
-            Destroy(this.gameObject);
-        }
         healthbar.SetHealth(currentHealth , maxHealth);
+       
     }
 }

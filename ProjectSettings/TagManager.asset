@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Selectable
   - Enemy_Hit
+  - Hit
+  - Player_Hitbox
   layers:
   - Default
   - TransparentFX

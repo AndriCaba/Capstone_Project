@@ -64,7 +64,7 @@ public class BulletStateManager_Player : MonoBehaviour
             
 
         }
-        Destroy(this.gameObject);
+        
         
     }
 
