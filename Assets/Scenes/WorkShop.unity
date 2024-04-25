@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,8 +152,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1776675013}
   - {fileID: 1003985987}
+  - {fileID: 1776675013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &337075729
@@ -409,8 +409,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b6d17ab8d01d640b7e3916b481771d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractorSource: {fileID: 715687994}
-  InteractRange: 54.9
+  cameraController: {fileID: 0}
+  interactorSource: {fileID: 0}
+  interactRange: 0
+  selectableObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  aimStateManager: {fileID: 0}
 --- !u!1 &845271586
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,8 +735,8 @@ Transform:
   - {fileID: 1926644567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1776675013 stripped
-Transform:
+--- !u!224 &1776675013 stripped
+RectTransform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544,
     type: 3}
   m_PrefabInstance: {fileID: 337075729}

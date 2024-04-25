@@ -128,7 +128,7 @@ public class Enemy_Attack : MonoBehaviour
         // Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         transform.LookAt(player);
-
+    
         Instantiate(bulletPrefab, bulletParent.position, Quaternion.identity);
     }
 
